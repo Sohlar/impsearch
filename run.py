@@ -91,12 +91,13 @@ class OpenAIAnalyzer:
     def organize_code():
         pass
 
-
 def main(pdf_path, openai_api_key):
     #extract and clean text from PDF
     pdf_reader = PDFReader(pdf_path)
     raw_text = pdf_reader.extract_text()
+    chunks = PDFReader.chunk_text(cleaned_text)
     cleaned_text = PDFReader.clean_text(raw_text)
+    
 
     #analyze paper and generate code snippets
     openai_analyzer = OpenAIAnalyzer(openai_api_key)
